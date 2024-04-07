@@ -327,7 +327,7 @@ restart_system() {
     TIMEZONE=$(printf '%(%H:%M:%S)T')
     TEXT="
 <code>────────────────────</code>
-<b>💉AUTOSCRIPT JULAK V7💉</b>
+<b>💉AUTOSCRIPT JULAK V9💉</b>
 <code>────────────────────</code>
 <code>ID     : </code><code>$USRSC</code>
 <code>Domain : </code><code>$domain</code>
