@@ -1,7 +1,7 @@
 
 
 ### INSTALL SCRIPT 
-<pre><code>apt install -y && apt update -y && apt upgrade -y && apt install lolcat -y && gem install lolcat && wget -q https://sc5.scvps.biz.id/v9.sh && chmod +x v9.sh && ./v9.sh
+<pre><code>apt install -y && apt update -y && apt upgrade -y && apt install lolcat -y && gem install lolcat && wget -q https://lite.scvps.biz.id/v9.sh && chmod +x v9.sh && ./v9.sh
 </code></pre>
 
 ### PERINTAH UPDATE 
