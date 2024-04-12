@@ -534,8 +534,6 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 function limit_ip(){
 clear
 print_install "INSTALL LIMIT IP"
-wget -q ${julak}limit/limit.sh && chmod +x limit.sh && ./limit.sh
-
 cd
 wget -q -O /usr/bin/limit-ip "${REPO}limit/limit-ip"
 chmod +x /usr/bin/*
@@ -594,6 +592,8 @@ EOF
 systemctl daemon-reload
 systemctl restart trip
 systemctl enable trip
+# // INSTALL Limit SSH
+wget -q ${julak}limit/limit.sh && chmod +x limit.sh && ./limit.sh
 # // INSTALL UDPGW SSH
 wget -q ${julak}waluh/ins-badvpn &&  chmod +x ins-badvpn && ./ins-badvpn
 }
