@@ -3,14 +3,15 @@
 function send_log(){
 CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
 KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
-TIME="10"
-URL="https://api.telegram.org/bot$KEY/sendMessage"
+export TIME="10"
+export URL="https://api.telegram.org/bot$KEY/sendMessage"
 TEXT="
 <code>────────────────────</code>
-<b>⚠️ NOTIFICATIONS MULTI LOGIN ⚠️</b>
+<b>⚠️NOTIF LIMIT IP SC V.9 ⚠️</b>
+<b>⚠️USER MULTI LOGIN⚠️</b>
 <code>────────────────────</code>
-<code>Username  : </code><code>$user</code>
-<code>Limit Ip    : </code><code>$data</code>
+<code>Username    : </code><code>$user</code>
+<code>Limit Ip    : </code><code>$jum2</code>
 <code>────────────────────</code>
 "
 curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
@@ -18,9 +19,9 @@ curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TE
 function vmip(){
 #LIMITVMESSIP
 echo -n > /var/log/xray/access.log
-sleep 440
+sleep 4
 data=( `ls /etc/julak/limit/vmess/ip`);
-#Decrypted By YADDY D PHREAKER
+#Decrypted By JULAK BANTUR
     for user in "${data[@]}"
     do
         iplimit=$(cat /etc/julak/limit/vmess/ip/$user)
@@ -43,9 +44,9 @@ data=( `ls /etc/julak/limit/vmess/ip`);
 function vlip(){
 #LIMITVLESSIP
 echo -n > /var/log/xray/access.log
-sleep 440
+sleep 4
 data=( `ls /etc/julak/limit/vless/ip`);
-#Decrypted By YADDY D PHREAKER
+#Decrypted By JULAK BANTUR
     for user in "${data[@]}"
     do
         iplimit=$(cat /etc/julak/limit/vless/ip/$user)
@@ -68,9 +69,9 @@ data=( `ls /etc/julak/limit/vless/ip`);
 function trip(){
 #LIMITIPTROJAN
 echo -n > /var/log/xray/access.log
-sleep 440
+sleep 4
 data=( `ls /etc/julak/limit/trojan/ip`);
-#Decrypted By YADDY D PHREAKER
+#Decrypted By JULAK BANTUR
     for user in "${data[@]}"
     do
         iplimit=$(cat /etc/julak/limit/trojan/ip/$user)
@@ -98,7 +99,3 @@ vlip
 elif [[ ${1} == "trip" ]]; then
 trip
 fi
-
-
-
-
