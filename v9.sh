@@ -310,12 +310,12 @@ echo $host1 > /root/domain
 echo ""
 elif [[ $host == "2" ]]; then
 #install cf
-wget ${REPO}linak/cf.sh && chmod +x cf.sh && ./cf.sh
+wget ${julak}linak/cf.sh && chmod +x cf.sh && ./cf.sh
 rm -f /root/cf.sh
 clear
 else
 print_install "Random Subdomain/Domain is Used"
-wget ${REPO}linak/cf.sh && chmod +x cf.sh && ./cf.sh
+wget ${julak}linak/cf.sh && chmod +x cf.sh && ./cf.sh
 rm -f /root/cf.sh
 clear
     fi
@@ -536,12 +536,12 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 function limit_ip(){
 clear
 print_install "INSTALL LIMIT IP"
-wget -q -O /usr/local/sbin/quota "${REPO}limit/quota"
+wget -q -O /usr/local/sbin/quota "${julak}limit/quota"
 chmod +x /usr/local/sbin/quota
 cd /usr/local/sbin/
 sed -i 's/\r//' quota
 cd
-wget -q -O /usr/bin/limit-ip "${REPO}limit/limit-ip"
+wget -q -O /usr/bin/limit-ip "${julak}limit/limit-ip"
 chmod +x /usr/bin/*
 cd /usr/bin
 sed -i 's/\r//' limit-ip
@@ -654,7 +654,7 @@ systemctl daemon-reload
 systemctl restart qmtr
 systemctl enable qmtr
 # // INSTALL Limit SSH
-wget -q ${julak}limit/limit.sh && chmod +x limit.sh && ./limit.sh
+#wget -q ${julak}limit/limit.sh && chmod +x limit.sh && ./limit.sh
 # // INSTALL UDPGW SSH
 wget -q ${julak}waluh/ins-badvpn &&  chmod +x ins-badvpn && ./ins-badvpn
 }
