@@ -68,7 +68,7 @@ checking_sc() {
     exit
   fi
 }
-
+checking_sc
 # // Checking Os Architecture
 if [[ $( uname -m | awk '{print $1}' ) == "x86_64" ]]; then
     echo -e "${OK} Your Architecture Is Supported ( ${green}$( uname -m )${NC} )"
@@ -296,8 +296,8 @@ clear
     echo -e "   .----------------------------------."
 echo -e "   |\e[1;32mPlease Select a Domain Type Below \e[0m|"
 echo -e "   '----------------------------------'"
-echo -e "     \e[1;32m1)\e[0m Input Your Domain"
-echo -e "     \e[1;32m2)\e[0m Random Domain"
+echo -e "     \e[1;32m1)\e[0m Enter Your Subdomain"
+echo -e "     \e[1;32m2)\e[0m Use a Random Subdomain"
 echo -e "   ------------------------------------"
 read -p "   Please select numbers 1-2 or Any Button(Random) : " host
 echo ""
@@ -310,11 +310,13 @@ echo $host1 > /root/domain
 echo ""
 elif [[ $host == "2" ]]; then
 #install cf
-wget -q ${julak}linak/cf.sh && chmod +x cf.sh && ./cf.sh
+wget ${REPO}linak/cf.sh && chmod +x cf.sh && ./cf.sh
 rm -f /root/cf.sh
 clear
 else
-print_install "Domain is Used"
+print_install "Random Subdomain/Domain is Used"
+wget ${REPO}linak/cf.sh && chmod +x cf.sh && ./cf.sh
+rm -f /root/cf.sh
 clear
     fi
 }
@@ -534,6 +536,10 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 function limit_ip(){
 clear
 print_install "INSTALL LIMIT IP"
+wget -q -O /usr/local/sbin/quota "${REPO}limit/quota"
+chmod +x /usr/local/sbin/quota
+cd /usr/local/sbin/
+sed -i 's/\r//' quota
 cd
 wget -q -O /usr/bin/limit-ip "${REPO}limit/limit-ip"
 chmod +x /usr/bin/*
@@ -592,6 +598,61 @@ EOF
 systemctl daemon-reload
 systemctl restart trip
 systemctl enable trip
+#SERVICE LIMIT QUOTA
+
+#SERVICE VMESS
+cat >/etc/systemd/system/qmv.service << EOF
+[Unit]
+Description=My
+ProjectAfter=network.target
+
+[Service]
+WorkingDirectory=/root
+ExecStart=/usr/local/sbin/quota vmess
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl daemon-reload
+systemctl restart qmv
+systemctl enable qmv
+
+#SERVICE VLESS
+cat >/etc/systemd/system/qmvl.service << EOF
+[Unit]
+Description=My
+ProjectAfter=network.target
+
+[Service]
+WorkingDirectory=/root
+ExecStart=/usr/local/sbin/quota vless
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl daemon-reload
+systemctl restart qmvl
+systemctl enable qmvl
+
+#SERVICE TROJAN
+cat >/etc/systemd/system/qmtr.service << EOF
+[Unit]
+Description=My
+ProjectAfter=network.target
+
+[Service]
+WorkingDirectory=/root
+ExecStart=/usr/local/sbin/quota trojan
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl daemon-reload
+systemctl restart qmtr
+systemctl enable qmtr
 # // INSTALL Limit SSH
 wget -q ${julak}limit/limit.sh && chmod +x limit.sh && ./limit.sh
 # // INSTALL UDPGW SSH
@@ -683,9 +744,9 @@ account default
 host smtp.gmail.com
 port 587
 auth on
-user oceantestdigital@gmail.com
-from oceantestdigital@gmail.com
-password jokerman77 
+user backupsmtp93@gmail.com
+from backupsmtp93@gmail.com
+password sdallofkbpuhbtoa
 logfile ~/.msmtp.log
 EOF
 chown -R www-data:www-data /etc/msmtprc
@@ -720,10 +781,10 @@ gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | 
 function ins_Fail2ban(){
 clear
 print_install "INSTALL FAIL2BAN"
-#apt -y install fail2ban > /dev/null 2>&1
+apt -y install fail2ban > /dev/null 2>&1
 #sudo systemctl enable --now fail2ban
-#/etc/init.d/fail2ban restart
-#/etc/init.d/fail2ban status
+/etc/init.d/fail2ban restart
+/etc/init.d/fail2ban status
 
 # Instal DDOS Flate
 if [ -d '/usr/local/ddos' ]; then
@@ -925,7 +986,6 @@ clear
 
 function instal(){
 clear
-    checking_sc
     first_setup
     nginx_install
     base_package
