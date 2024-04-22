@@ -21,6 +21,10 @@
 - Auto clear log per 3 menit
 - Auto deler expired
 - User Details Akun
+- Xray Manual UUID
+- Backup/Restore
+- Change Theme
+- Install Udp Custom
 
 ### PORT INFO
 ```
@@ -53,6 +57,7 @@
 ```
 ### Auther
 ```
+Julak_Bantur_From_Kalsel
 ```
 Julak_Bantur :<a href="https://t.me/Cibut2d" target=”_blank”><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=Telegram&label=Telegram&message=Click%20Here&color=blue"></a><br>
 ```
