@@ -269,7 +269,7 @@ TEXT="<code>---------------------------------------------------</code>
 <code>---------------------------------------------------</code>
 <code>Remarks   : ${user}
 Domain    : ${domain}
-Limit Ip : ${iplimit} Login
+Limit Ip  : ${iplimit} Login
 Port TLS  : 443
 Port NTLS : 80
 id        : ${uuid}
@@ -301,12 +301,12 @@ curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TE
 clear
 clear
 echo -e "${z}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e " Xray/Vmess Account "
+echo -e "  Xray/Vmess Account "
 echo -e "${z}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "Remarks          : ${user}"
 echo -e "Domain           : ${domain}"
 #echo -e "User Quota       : ${Quota} GB"
-echo -e "User Ip            : ${iplimit} IP"
+echo -e "User Ip          : ${iplimit} IP"
 echo -e "Port TLS         : 443"
 echo -e "Port gRPC        : 443"
 echo -e "port None TLS    : 80"
@@ -317,17 +317,20 @@ echo -e "Network          : ws"
 echo -e "Path             : /vmess (/Multipath)"
 echo -e "ServiceName      : vmess-grpc"
 echo -e "${z}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "Link TLS         : ${vmesslink1}"
+echo -e "Link TLS         :"
+echo -e "${vmesslink1}"
 echo -e "${z}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "Link none TLS    : ${vmesslink2}"
+echo -e "Link none TLS    :"
+echo -e "${vmesslink2}"
 echo -e "${z}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "Link GRPC        : ${vmesslink3}"
+echo -e "Link GRPC        :"
+echo -e "${vmesslink3}"
 echo -e "${z}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "Format OpenClash : https://${domain}:81/vmess-$user.txt"
 echo -e "${z}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "Masa Aktif    : $exp"
+echo -e "Masa Aktif       : $exp"
 echo -e "${z}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "        Script By Julak Bantur             "
+echo -e "         Script By Julak Bantur             "
 echo -e "${z}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo " "
 read -n 1 -s -r -p "Press any key to back on menu"
