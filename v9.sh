@@ -757,23 +757,23 @@ clear
 function ins_swab(){
 clear
 print_install "INSTALL SWAP"
-gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
-    gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
-    curl -sL "$gotop_link" -o /tmp/gotop.deb
-    dpkg -i /tmp/gotop.deb >/dev/null 2>&1
+#gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
+    #gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
+    #curl -sL "$gotop_link" -o /tmp/gotop.deb
+    #dpkg -i /tmp/gotop.deb >/dev/null 2>&1
     
         # > Buat swap sebesar 1G
-    dd if=/dev/zero of=/swapfile bs=1024 count=1048576
-    mkswap /swapfile
-    chown root:root /swapfile
-    chmod 0600 /swapfile >/dev/null 2>&1
-    swapon /swapfile >/dev/null 2>&1
-    sed -i '$ i\/swapfile      swap swap   defaults    0 0' /etc/fstab
+    #dd if=/dev/zero of=/swapfile bs=1024 count=1048576
+    #mkswap /swapfile
+    #chown root:root /swapfile
+    #chmod 0600 /swapfile >/dev/null 2>&1
+    #swapon /swapfile >/dev/null 2>&1
+    #sed -i '$ i\/swapfile      swap swap   defaults    0 0' /etc/fstab
 
     # > Singkronisasi jam
-    chronyd -q 'server 0.id.pool.ntp.org iburst'
-    chronyc sourcestats -v
-    chronyc tracking -v
+    #chronyd -q 'server 0.id.pool.ntp.org iburst'
+    #chronyc sourcestats -v
+    #chronyc tracking -v
     
     wget -q ${julak}linak/bbr.sh &&  chmod +x bbr.sh && ./bbr.sh
 }
@@ -845,7 +845,7 @@ apt autoremove -y >/dev/null 2>&1
 function ins_restart(){
 clear
 /etc/init.d/nginx restart
-/etc/init.d/openvpn restart
+#/etc/init.d/openvpn restart
 /etc/init.d/ssh restart
 /etc/init.d/dropbear restart
 /etc/init.d/fail2ban restart
@@ -868,9 +868,9 @@ history -c
 echo "unset HISTFILE" >> /etc/profile
 
 cd
-rm -f /root/openvpn
-rm -f /root/key.pem
-rm -f /root/cert.pem
+#rm -f /root/openvpn
+#rm -f /root/key.pem
+#rm -f /root/cert.pem
 }
 
 function menu(){
@@ -925,8 +925,8 @@ cat >/etc/cron.d/xp_all <<-END
 		0 3 * * * root /sbin/reboot
 	END
 
-    echo "*/1 * * * * root echo -n > /var/log/nginx/access.log" >/etc/cron.d/log.nginx
-    echo "*/1 * * * * root echo -n > /var/log/xray/access.log" >>/etc/cron.d/log.xray
+    #echo "*/1 * * * * root echo -n > /var/log/nginx/access.log" >/etc/cron.d/log.nginx
+    #echo "*/1 * * * * root echo -n > /var/log/xray/access.log" >>/etc/cron.d/log.xray
     service cron restart
     cat >/home/daily_reboot <<-END
 		5
@@ -998,7 +998,7 @@ clear
     ins_SSHD
     ins_dropbear
     ins_vnstat
-    ins_openvpn
+    #ins_openvpn
     ins_backup
     ins_swab
     ins_Fail2ban
